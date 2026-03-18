@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.bananaparty.save": {
+      "version": "file:com.bananaparty.save",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.ext.nunit": {
       "version": "2.0.5",
       "depth": 2,
