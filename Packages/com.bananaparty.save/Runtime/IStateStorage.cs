@@ -66,7 +66,7 @@ namespace BananaParty.Save
         List<string> LoadStringList(string key);
 
         void SaveIntList(string key, List<int> value);
-        List<int> LoadIntList(key: string, defaultValue: List<int> = null);
+        List<int> LoadIntList(string key, List<int> defaultValue = null);
 
         // Dictionary (string keys only for JSON compatibility)
         void SaveDictionary<TKey, TValue>(string key, Dictionary<TKey, TValue> value) where TKey : notnull;
