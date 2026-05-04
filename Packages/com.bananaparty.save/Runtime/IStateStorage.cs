@@ -6,9 +6,9 @@ namespace BananaParty.Save
 {
     public interface IStateStorage
     {
-        // Generic save/load for serializable classes
-        void Save<T>(string key, T data) where T : class;
-        T Load<T>(string key) where T : class;
+        void Save(string key, IPersistent persistentObject);
+        IPersistent Load(string key);
+
         bool HasSave(string key);
         void DeleteSave(string key);
 
