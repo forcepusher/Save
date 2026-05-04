@@ -1,17 +1,10 @@
 {
-  "name": "com.bananaparty.save",
-  "version": "1.0.0",
-  "type": "library",
-  "displayName": "Save",
-  "unity": "2022.3",
-  "description": "Library for saving and loading game state",
-  "license": "MIT",
-  "samples": [
-    {
-      "displayName": "SaveSample",
-      "description": "Library for saving and loading game state",
-      "path": "Samples~/SaveSample"
-    }
-  ],
-  "author": "github.com/forcepusher"
+    "name": "com.bananaparty.save",
+    "version": "1.0.0",
+    "type": "library",
+    "displayName": "Save",
+    "unity": "2022.3",
+    "description": "Library for saving and loading game state",
+    "license": "MIT",
+    "author": "github.com/forcepusher"
 }
