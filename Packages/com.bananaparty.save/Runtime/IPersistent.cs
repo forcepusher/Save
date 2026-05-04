@@ -1,7 +1,7 @@
 namespace BananaParty.Save
 {
-    public interface ISaveable
+    public interface IPersistent
     {
-
+        
     }
 }
