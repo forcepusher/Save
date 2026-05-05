@@ -20,47 +20,47 @@ namespace BananaParty.Save.Tests
 
         // Utility tests
         [UnityTest]
-        public IEnumerator TestHasSaveReturnsFalseForMissingKey()
+        public IEnumerator TestHasStateReturnsFalseForMissingKey()
         {
-            Assert.IsFalse(_storage.HasSave("nonexistent"));
+            Assert.IsFalse(_storage.HasState("nonexistent"));
             yield return null;
         }
 
         [UnityTest]
-        public IEnumerator TestHasSaveReturnsTrueAfterSaving()
-        {
-            _storage.SaveInt("test", 42);
-            Assert.IsTrue(_storage.HasSave("test"));
-            yield return null;
-        }
-
-        [UnityTest]
-        public IEnumerator TestDeleteSaveRemovesKey()
+        public IEnumerator TestHasStateReturnsTrueAfterSaving()
         {
             _storage.SaveInt("test", 42);
-            Assert.IsTrue(_storage.HasSave("test"));
-
-            _storage.DeleteSave("test");
-            Assert.IsFalse(_storage.HasSave("test"));
+            Assert.IsTrue(_storage.HasState("test"));
             yield return null;
         }
 
         [UnityTest]
-        public IEnumerator TestClearAllRemovesEverything()
+        public IEnumerator TestDeleteStateRemovesKey()
+        {
+            _storage.SaveInt("test", 42);
+            Assert.IsTrue(_storage.HasState("test"));
+
+            _storage.DeleteState("test");
+            Assert.IsFalse(_storage.HasState("test"));
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator TestClearAllStateRemovesEverything()
         {
             _storage.SaveInt("key1", 1);
             _storage.SaveFloat("key2", 2.0f);
             _storage.SaveString("key3", "hello");
 
-            Assert.IsTrue(_storage.HasSave("key1"));
-            Assert.IsTrue(_storage.HasSave("key2"));
-            Assert.IsTrue(_storage.HasSave("key3"));
+            Assert.IsTrue(_storage.HasState("key1"));
+            Assert.IsTrue(_storage.HasState("key2"));
+            Assert.IsTrue(_storage.HasState("key3"));
 
-            _storage.ClearAll();
+            _storage.ClearAllState();
 
-            Assert.IsFalse(_storage.HasSave("key1"));
-            Assert.IsFalse(_storage.HasSave("key2"));
-            Assert.IsFalse(_storage.HasSave("key3"));
+            Assert.IsFalse(_storage.HasState("key1"));
+            Assert.IsFalse(_storage.HasState("key2"));
+            Assert.IsFalse(_storage.HasState("key3"));
             yield return null;
         }
 

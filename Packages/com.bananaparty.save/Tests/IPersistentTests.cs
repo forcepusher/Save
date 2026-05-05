@@ -52,7 +52,7 @@ namespace BananaParty.Save.Tests
             var storage = new JsonStateStorage();
             obj.Save(storage);
 
-            Assert.IsTrue(storage.HasSave("id"));
+            Assert.IsTrue(storage.HasState("id"));
             Assert.AreEqual(123, storage.LoadInt("id"));
             Assert.AreEqual("test", storage.LoadString("name"));
             Vector3 pos = storage.LoadVector3("position");

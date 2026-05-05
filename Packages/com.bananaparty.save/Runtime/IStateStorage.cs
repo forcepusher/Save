@@ -7,9 +7,9 @@ namespace BananaParty.Save
     public interface IStateStorage
     {
         // Utility
-        bool HasSave(string key);
-        void DeleteSave(string key);
-        void ClearAll();
+        bool HasState(string key);
+        void DeleteState(string key);
+        void ClearAllState();
 
         // Primitive types
         void SaveInt(string key, int value);
