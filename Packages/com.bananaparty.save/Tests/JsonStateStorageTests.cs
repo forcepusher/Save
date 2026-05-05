@@ -372,7 +372,6 @@ namespace BananaParty.Save.Tests
             yield return null;
         }
 
-        // IPersistent tests - testing Save() and Load() interface methods
         [Serializable]
         private class TestPersistent : IPersistent
         {
