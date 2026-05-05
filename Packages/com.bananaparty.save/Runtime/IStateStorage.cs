@@ -11,10 +11,6 @@ namespace BananaParty.Save
         void DeleteSave(string key);
         void ClearAll();
 
-        // Recursive saving/loading
-        void Save(string key, IPersistent persistentObject);
-        IPersistent Load(string key);
-
         // Primitive types
         void SaveInt(string key, int value);
         int LoadInt(string key, int defaultValue = 0);

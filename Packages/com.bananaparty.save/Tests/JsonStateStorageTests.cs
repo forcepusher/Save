@@ -492,18 +492,23 @@ namespace BananaParty.Save.Tests
         [UnityTest]
         public IEnumerator TestStorageLoadMissingIPersistentReturnsNull()
         {
-            IPersistent result = _storage.Load("missing");
+            SimplePersistent result = _storage.Load<SimplePersistent>("missing");
             Assert.IsNull(result);
             yield return null;
         }
 
         [UnityTest]
-        public IEnumerator TestStorageSaveIPersistentStoresJson()
+        public IEnumerator TestStorageSaveLoadIPersistentData()
         {
             SimplePersistent original = new SimplePersistent { id = 789, name = "persistence" };
 
             _storage.Save("persistKey", original);
             Assert.IsTrue(_storage.HasSave("persistKey"));
+
+            SimplePersistent loaded = _storage.Load<SimplePersistent>("persistKey");
+            Assert.IsNotNull(loaded);
+            Assert.AreEqual(original.id, loaded.id);
+            Assert.AreEqual(original.name, loaded.name);
 
             yield return null;
         }

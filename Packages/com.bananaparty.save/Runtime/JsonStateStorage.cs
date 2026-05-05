@@ -36,15 +36,13 @@ namespace BananaParty.Save
             _storage[key] = json;
         }
 
-        public IPersistent Load(string key)
+        public T Load<T>(string key) where T : IPersistent
         {
             if (!_storage.TryGetValue(key, out var obj)) return null;
             string json = obj as string;
             if (string.IsNullOrEmpty(json)) return null;
 
-            // Need concrete type - for now deserialize to dynamic or use reflection
-            // In practice, caller should specify type or we need a registry
-            return JsonUtility.FromJson<IPersistent>(json);
+            return JsonUtility.FromJson<T>(json);
         }
 
         // Primitive types
