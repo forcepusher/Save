@@ -481,56 +481,11 @@ namespace BananaParty.Save.Tests
             yield return null;
         }
 
-        [UnityTest]
-        public IEnumerator TestStorageSaveNullIPersistent()
-        {
-            _storage.Save("nullKey", null as IPersistent);
-            Assert.IsFalse(_storage.HasSave("nullKey"));
-            yield return null;
-        }
 
-        [UnityTest]
-        public IEnumerator TestStorageLoadMissingIPersistentReturnsNull()
-        {
-            SimplePersistent result = _storage.Load<SimplePersistent>("missing");
-            Assert.IsNull(result);
-            yield return null;
-        }
 
-        [UnityTest]
-        public IEnumerator TestStorageSaveLoadIPersistentData()
-        {
-            SimplePersistent original = new SimplePersistent { id = 789, name = "persistence" };
 
-            _storage.Save("persistKey", original);
-            Assert.IsTrue(_storage.HasSave("persistKey"));
 
-            SimplePersistent loaded = _storage.Load<SimplePersistent>("persistKey");
-            Assert.IsNotNull(loaded);
-            Assert.AreEqual(original.id, loaded.id);
-            Assert.AreEqual(original.name, loaded.name);
 
-            yield return null;
-        }
-
-        [Serializable]
-        private class SimplePersistent : IPersistent
-        {
-            public int id;
-            public string name;
-
-            public void Save(IStateStorage stateStorage)
-            {
-                stateStorage.SaveInt("id", id);
-                stateStorage.SaveString("name", name);
-            }
-
-            public void Load(IStateStorage stateStorage)
-            {
-                id = stateStorage.LoadInt("id");
-                name = stateStorage.LoadString("name");
-            }
-        }
 
 
         // Edge cases

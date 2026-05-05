@@ -28,22 +28,7 @@ namespace BananaParty.Save
         public void DeleteSave(string key) => _storage.Remove(key);
         public void ClearAll() => _storage.Clear();
 
-        // Recursive saving/loading for IPersistent objects
-        public void Save(string key, IPersistent persistentObject)
-        {
-            if (persistentObject == null) return;
-            string json = JsonUtility.ToJson(persistentObject);
-            _storage[key] = json;
-        }
 
-        public T Load<T>(string key) where T : IPersistent
-        {
-            if (!_storage.TryGetValue(key, out var obj)) return null;
-            string json = obj as string;
-            if (string.IsNullOrEmpty(json)) return null;
-
-            return JsonUtility.FromJson<T>(json);
-        }
 
         // Primitive types
         public void SaveInt(string key, int value) => _storage[key] = JsonUtility.ToJson(new IntWrapper { value = value });
