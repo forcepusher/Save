@@ -33,7 +33,7 @@ namespace BananaParty.Save
 
         // Byte array support
         void SaveByteArray(string key, byte[] value);
-        byte[] LoadByteArray(string key, byte[] defaultValue = null);
+        byte[] LoadByteArray(string key);
 
         // Unity Vector types
         void SaveVector2(string key, Vector2 value);
@@ -45,6 +45,13 @@ namespace BananaParty.Save
         void SaveVector4(string key, Vector4 value);
         Vector4 LoadVector4(string key, Vector4 defaultValue = default);
 
+        // Unity integer vectors
+        void SaveVector2Int(string key, Vector2Int value);
+        Vector2Int LoadVector2Int(string key, Vector2Int defaultValue = default);
+
+        void SaveVector3Int(string key, Vector3Int value);
+        Vector3Int LoadVector3Int(string key, Vector3Int defaultValue = default);
+
         // Unity rotation/color types
         void SaveQuaternion(string key, Quaternion value);
         Quaternion LoadQuaternion(string key, Quaternion defaultValue = default);
@@ -55,25 +62,40 @@ namespace BananaParty.Save
         void SaveColor32(string key, Color32 value);
         Color32 LoadColor32(string key, Color32 defaultValue = default);
 
-        // Collections
-        void SaveList<T>(string key, List<T> value) where T : class;
-        List<T> LoadList<T>(string key) where T : class;
+        // Unity Rect/Bounds
+        void SaveRect(string key, Rect value);
+        Rect LoadRect(string key, Rect defaultValue = default);
 
-        void SaveStringList(string key, List<string> value);
-        List<string> LoadStringList(string key);
+        void SaveBounds(string key, Bounds value);
+        Bounds LoadBounds(string key, Bounds defaultValue = default);
 
-        void SaveIntList(string key, List<int> value);
-        List<int> LoadIntList(string key, List<int> defaultValue = null);
+        // Date/time types
+        void SaveDateTime(string key, DateTime value);
+        DateTime LoadDateTime(string key, DateTime defaultValue = default);
 
-        // Dictionary (string keys only for JSON compatibility)
+        void SaveTimeSpan(string key, TimeSpan value);
+        TimeSpan LoadTimeSpan(string key, TimeSpan defaultValue = default);
+
+        // Collections - removed class constraint to support value types
+        void SaveList<T>(string key, List<T> value);
+        List<T> LoadList<T>(string key);
+
+        // Dictionary with proper constraints for JSON compatibility
         void SaveDictionary<TKey, TValue>(string key, Dictionary<TKey, TValue> value) where TKey : notnull;
         Dictionary<TKey, TValue> LoadDictionary<TKey, TValue>(string key) where TKey : notnull;
+
+        // Array support
+        void SaveStringArray(string key, string[] value);
+        string[] LoadStringArray(string key);
+
+        void SaveIntArray(string key, int[] value);
+        int[] LoadIntArray(string key);
 
         // GUID support
         void SaveGuid(string key, Guid value);
         Guid LoadGuid(string key, Guid defaultValue = default);
 
-        // Enum support (stored as string for safety)
+        // Enum support (stored as string for versioning safety)
         void SaveEnum<T>(string key, T value) where T : Enum;
         T LoadEnum<T>(string key, T defaultValue = default) where T : Enum;
 
