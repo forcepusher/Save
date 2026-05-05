@@ -31,6 +31,10 @@ namespace BananaParty.Save
         void SaveString(string key, string value);
         string LoadString(string key, string defaultValue = null);
 
+        // Byte array support
+        void SaveByteArray(string key, byte[] value);
+        byte[] LoadByteArray(string key, byte[] defaultValue = null);
+
         // Unity Vector types
         void SaveVector2(string key, Vector2 value);
         Vector2 LoadVector2(string key, Vector2 defaultValue = default);
@@ -50,13 +54,6 @@ namespace BananaParty.Save
 
         void SaveColor32(string key, Color32 value);
         Color32 LoadColor32(string key, Color32 defaultValue = default);
-
-        // Unity Rect types
-        void SaveRect(string key, Rect value);
-        Rect LoadRect(string key, Rect defaultValue = default);
-
-        void SaveRectInt(string key, RectInt value);
-        RectInt LoadRectInt(string key, RectInt defaultValue = default);
 
         // Collections
         void SaveList<T>(string key, List<T> value) where T : class;
