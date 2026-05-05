@@ -6,11 +6,14 @@ namespace BananaParty.Save
 {
     public interface IStateStorage
     {
-        void Save(string key, IPersistent persistentObject);
-        IPersistent Load(string key);
-
+        // Utility
         bool HasSave(string key);
         void DeleteSave(string key);
+        void ClearAll();
+
+        // Recursive saving/loading
+        void Save(string key, IPersistent persistentObject);
+        IPersistent Load(string key);
 
         // Primitive types
         void SaveInt(string key, int value);
@@ -39,7 +42,7 @@ namespace BananaParty.Save
         void SaveVector3Int(string key, Vector3Int value);
         Vector3Int LoadVector3Int(string key, Vector3Int defaultValue = default);
 
-        // Unity rotation/color types
+        // Unity types
         void SaveQuaternion(string key, Quaternion value);
         Quaternion LoadQuaternion(string key, Quaternion defaultValue = default);
 
@@ -50,7 +53,7 @@ namespace BananaParty.Save
         void SaveDateTime(string key, DateTime value);
         DateTime LoadDateTime(string key, DateTime defaultValue = default);
 
-        // Collections - removed class constraint to support value types
+        // Collections
         void SaveList<T>(string key, List<T> value);
         List<T> LoadList<T>(string key);
 
@@ -63,8 +66,5 @@ namespace BananaParty.Save
 
         void SaveEnum<T>(string key, T value) where T : Enum;
         T LoadEnum<T>(string key, T defaultValue = default) where T : Enum;
-
-        // Clear all saves
-        void ClearAll();
     }
 }
