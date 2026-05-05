@@ -31,10 +31,6 @@ namespace BananaParty.Save
         void SaveString(string key, string value);
         string LoadString(string key, string defaultValue = null);
 
-        // Byte array support
-        void SaveByteArray(string key, byte[] value);
-        byte[] LoadByteArray(string key);
-
         // Unity Vector types
         void SaveVector2(string key, Vector2 value);
         Vector2 LoadVector2(string key, Vector2 defaultValue = default);
@@ -62,13 +58,6 @@ namespace BananaParty.Save
         void SaveColor32(string key, Color32 value);
         Color32 LoadColor32(string key, Color32 defaultValue = default);
 
-        // Unity Rect/Bounds
-        void SaveRect(string key, Rect value);
-        Rect LoadRect(string key, Rect defaultValue = default);
-
-        void SaveBounds(string key, Bounds value);
-        Bounds LoadBounds(string key, Bounds defaultValue = default);
-
         // Date/time types
         void SaveDateTime(string key, DateTime value);
         DateTime LoadDateTime(string key, DateTime defaultValue = default);
@@ -90,6 +79,9 @@ namespace BananaParty.Save
 
         void SaveIntArray(string key, int[] value);
         int[] LoadIntArray(string key);
+
+        void SaveByteArray(string key, byte[] value);
+        byte[] LoadByteArray(string key);
 
         // GUID support
         void SaveGuid(string key, Guid value);
