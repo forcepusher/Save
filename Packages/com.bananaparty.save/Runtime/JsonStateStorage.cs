@@ -24,9 +24,9 @@ namespace BananaParty.Save
         [Serializable] private class ByteArrayWrapper { public byte[] value; }
 
         // Utility methods
-        public bool HasSave(string key) => _storage.ContainsKey(key);
-        public void DeleteSave(string key) => _storage.Remove(key);
-        public void ClearAll() => _storage.Clear();
+        public bool HasState(string key) => _storage.ContainsKey(key);
+        public void DeleteState(string key) => _storage.Remove(key);
+        public void ClearAllState() => _storage.Clear();
 
 
 
